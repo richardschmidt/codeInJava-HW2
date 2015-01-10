@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+package problem_1;
+
+import java.util.*;
+public class Program_1 {
+
+	
+	public static void main(String[] args) {
+		
+		double totalSales = 0;
+		int numOfMonths = 0;
+		double monthlySale = 0;
+		
+		Scanner inReader= new Scanner (System.in);
+		
+		
+		
+		do {
+			System.out.println("Input the monthly sales revenues!");
+			monthlySale = inReader.nextDouble();
+			if (monthlySale<0){System.out.println("Negative value not permitted, try again!");
+				monthlySale = inReader.nextDouble();}
+			numOfMonths++;
+			totalSales = totalSales+monthlySale;
+		}
+		while (totalSales<1000000);
+		
+		double []aDoubleArray = new double [16];	
+		java.util.Arrays.fill(aDoubleArray,0);
+	
+		System.out.println("It will take "+numOfMonths+" months to reach your first 1,000,000 Dollars!");
+	}
+
+	}
+
+

@@ -1,0 +1,80 @@
+/**
+ * 
+ */
+package problem_3;
+
+import java.util.Scanner;
+import java.math.*;
+
+public class Program_3 {
+
+	
+	public static void main(String[] args) {
+		double loanAmount = 0;
+		int numMonths = 0;
+		double annualInterestRate = 0;
+		double monthlyInterestRate;
+		double monthlyPayment;
+		double balance = loanAmount;
+		double principal = 0;
+		double monthlyInterest = 0;//variables enabled
+		//activate scanner class
+		Scanner inReader = new Scanner (System.in);
+		//Loan input
+		System.out.println("Input loan amount!");
+		loanAmount = inReader.nextDouble();
+		
+		//while loop to check negatives
+		while (loanAmount < 0){System.out.println("No negative values, please try again!");
+		System.out.println("Input loan amount!");
+		loanAmount = inReader.nextDouble();
+		}
+		//Loan period input
+		System.out.println("Input loan period (in months)!");
+		numMonths = inReader.nextInt();
+		//while loop to check negatives
+		while (numMonths < 0){System.out.println("No negative values, please try again!");
+		System.out.println("Input loan period (in months)!");
+		numMonths = inReader.nextInt();
+		}
+		//Annual Interest Rate input
+		System.out.println("Input annual interest rate!");
+		annualInterestRate = inReader.nextDouble();
+		//while loop to check negatives
+		while (annualInterestRate < 0){System.out.println("No negative values, please try again!");
+		System.out.println("Input annual interest rate!");
+		annualInterestRate = inReader.nextDouble();
+		}
+		//formulas to figure out monthly interest rate and monthly payment
+		monthlyInterestRate = annualInterestRate/1200;
+		monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - (1/Math.pow((1 + monthlyInterestRate), numMonths)));
+		//Output to console
+		monthlyInterestRate = annualInterestRate / 1200;
+
+		monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - (1/Math.pow((1 + monthlyInterestRate), numMonths)));
+		//Prints out the formatted loan detail to the console		
+		System.out.printf("Loan amount: %8.2f \n", loanAmount);
+		System.out.printf("Number of months: %8d \n", numMonths );
+		System.out.printf("Annual interest rate: %8.2f \n\n",  annualInterestRate);
+		System.out.println ("Payment # \t Monthly Payment \t Principal \t Interest \t Balance\n");
+		//set to solve the problem and get a solution
+		balance = loanAmount;
+		monthlyInterest = 0;
+		principal = 0;
+		//loop to run the program until it reaches the number of months the loan is for
+		for (int i = 1; i <= numMonths; i++)
+
+		{
+		//final formulas
+			monthlyInterest = monthlyInterestRate * balance;
+
+			principal = monthlyPayment - monthlyInterest;
+
+			balance = balance - principal;
+		//print out the results to the console
+			System.out.printf("%d \t\t %-6.2f \t\t %-6.2f \t %4.2f \t\t %6.2f\n", i, monthlyPayment, principal, monthlyInterest, balance);
+
+		}	
+
+	}
+}

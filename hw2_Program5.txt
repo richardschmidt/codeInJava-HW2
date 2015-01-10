@@ -1,0 +1,63 @@
+/**
+ * 
+ */
+package problem_5;
+
+import java.util.*;
+public class Program_5 {
+
+	
+	public static void main(String[] args) {
+	
+		int numGames = 7;
+		int gamesIndex = 0;
+	
+		Scanner inReader = new Scanner (System.in);
+		
+		int [] rangerScores = new int[numGames];
+		int [] yankeeScores = new int[numGames];
+		
+		for (int i = 0; i < rangerScores.length; i++)
+		{
+			gamesIndex++;
+			System.out.println("Enter Ranger's score for game number" + gamesIndex + ":");
+			rangerScores[i] = inReader.nextInt();
+			while (rangerScores[i] < 0){
+				System.out.println("Negative input not allowed, try again!");
+				System.out.println("Enter Ranger's score for game number" + gamesIndex + ":");
+				rangerScores[i] = inReader.nextInt();
+			}
+		}
+		gamesIndex = 0;
+			
+		for (int j = 0; j < yankeeScores.length; j++){
+			gamesIndex++;
+			System.out.println("Enter Yankee's score for game number" + gamesIndex + ":");
+			yankeeScores[j] = inReader.nextInt();
+			while (yankeeScores[j] < 0){
+				System.out.println("Negative input not allowed, try again!");
+				System.out.println("Enter Yankee's score for game number" + gamesIndex + ":");
+				yankeeScores[j] = inReader.nextInt();
+			}
+		}
+		gamesIndex = 0;
+		
+		for (int k = 0; k < rangerScores.length; k++){
+			gamesIndex++;
+		if (rangerScores[k]>yankeeScores[k]){
+			System.out.println("Rangers are the winners of game number " + " " + gamesIndex + " " + " :");
+		}	else if (rangerScores[k] < yankeeScores[k]){
+			System.out.println("Yankees are the winners of game number " + " " + gamesIndex + " " + " :");
+		}
+			else{
+				System.out.println("Rangers and Yankees tied in game number" + " " + gamesIndex + " " + " :");
+				
+			}
+		}
+		}
+		
+		
+
+	}
+
+

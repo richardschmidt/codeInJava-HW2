@@ -1,0 +1,74 @@
+/**
+ * 
+ */
+package problem_4;
+
+import java.util.*;
+public class Program_4 {
+
+	
+	public static void main(String[] args) {
+	int numStudent = 5;
+	
+	Scanner inReader = new Scanner (System.in);
+	String[]stdName = new String [numStudent];
+	double[]stdGPA = new double [numStudent];
+	
+	for (int i = 0;i <stdName.length;i++) {
+		
+		System.out.println("Enter a student's full name: first and last!");
+		stdName[i]=inReader.nextLine();
+		
+		while (stdName[i].equals("")) {
+			System.out.println("Incorrect input, name cannot be blank!");
+			System.out.println("Enter a student's full name: first and last!");
+			stdName[i] = inReader.nextLine();
+		}
+		System.out.println("Enter the student's GPA: ");
+		stdGPA [i] = inReader.nextDouble();
+		
+		while (stdGPA[i] < 0){
+			System.out.println("Incorrect input, GPA cannot be negative!");
+			System.out.println("Enter the student's GPA:");
+			stdGPA [i] = inReader.nextDouble();
+			
+		}
+		String temp = inReader.nextLine();
+	}
+	double sumGPA = 0;
+	double avgGPA = 0;
+	
+	for (int j = 0; j < stdGPA.length; j++){
+		sumGPA = sumGPA + stdGPA[j];
+	}	
+	avgGPA = sumGPA / numStudent;
+	System.out.printf("\nAverage GPA: %6.2f \n\n", avgGPA);
+	double highestGPA = 0;
+	double lowestGPA = 4.0;
+	
+	for (int k = 0; k < stdGPA.length;k++ ){
+		if (stdGPA[k] > highestGPA){
+			highestGPA = stdGPA[k];
+		}
+		if (stdGPA[k] < lowestGPA) {
+			lowestGPA = stdGPA[k];
+		}
+	}
+	System.out.println("These student's have the highest GPA!");
+	
+	for (int l = 0; l < stdGPA.length;l++){
+		if (stdGPA [l] == highestGPA) {
+			System.out.printf("%s \t\t %-6.2f \n", stdName[l] , stdGPA[l]);
+		}
+	}
+System.out.printf("\n");
+
+System.out.println("These student's have the lowest GPA!");
+for (int m = 0; m <stdGPA.length;m++){
+	if (stdGPA[m] == lowestGPA){
+		System.out.printf("%s \t\t %-6.2f \n", stdName[m], stdGPA[m]);
+	}
+}
+	}
+
+}

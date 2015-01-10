@@ -1,0 +1,50 @@
+/**
+ * 
+ */
+package problem_2;
+
+import java.util.*;
+
+public class Program_2{
+
+
+	public static void main(String[] args) {
+		double loanAmount = 0;
+		int numMonths = 0;
+		double annualInterestRate = 0; //4.25-->4.25%
+		double monthlyInterestRate;//set these =0
+		double monthlyPayment;//set =0
+		double totalPayment;//set =0
+		double totalInterest;//set =0
+		
+		Scanner inReader=new Scanner (System.in);
+		
+		System.out.println("Input loan amount!");
+		loanAmount = inReader.nextDouble();
+		while (loanAmount<0){System.out.println("No negative values, please try again!");
+		System.out.println("Inplut loan amount!");
+		loanAmount = inReader.nextDouble();
+		}
+		System.out.println("Input loan period (in months)!");
+		numMonths = inReader.nextInt();
+		while (numMonths<0){System.out.println("No negative values, please try again!");
+		System.out.println("Input loan period (in months)!");
+		numMonths = inReader.nextInt();
+		}
+		System.out.println("Input annual interest rate!");
+		annualInterestRate = inReader.nextDouble();
+		while (annualInterestRate<0){System.out.println("No negative values, please try again!");
+		System.out.println("Input annual interest rate!");
+		annualInterestRate = inReader.nextDouble();
+		}
+		monthlyInterestRate = annualInterestRate/1200;
+		monthlyPayment = (loanAmount * monthlyInterestRate)/(1-(1/(Math.pow(1+monthlyInterestRate,numMonths))));
+		totalPayment = monthlyPayment*numMonths;
+		totalInterest = totalPayment - loanAmount;		
+		System.out.printf ("Loan Amount:%6.2f  -  Number of Months:%6d  -  Annual Interest Rate:%8.2f %s\n" , loanAmount , numMonths , annualInterestRate , "%");
+		System.out.printf ("Monthly Payment:%6.2f\n", monthlyPayment);
+		System.out.printf ("Total Amount Paid : %6.2f  -  Total Interest Paid : %6.2f\n" ,  totalPayment, totalInterest);
+		
+	}//end main
+
+}//end class
